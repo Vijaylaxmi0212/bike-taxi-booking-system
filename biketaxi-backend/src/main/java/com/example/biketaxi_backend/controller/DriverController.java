@@ -24,4 +24,8 @@ public class DriverController {
     public List<Driver> getAllDrivers() {
         return driverRepository.findAll();
     }
+    @DeleteMapping("/{id}")
+    public void deleteDriver(@PathVariable Long id) {
+        driverRepository.deleteById(id);
+    }
 }

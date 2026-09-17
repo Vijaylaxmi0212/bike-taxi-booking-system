@@ -1,5 +1,6 @@
 package com.example.biketaxi_backend.controller;
 
+import com.example.biketaxi_backend.repository.RideRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,8 @@ public class RideController {
 
     @Autowired
     private RideService rideService;
+    @Autowired
+    private RideRepository rideRepository;
 
 
     @GetMapping
@@ -39,5 +42,9 @@ public class RideController {
     public Ride updateStatus(@PathVariable Long rideId,
                              @RequestParam RideStatus status) {
         return rideService.updateStatus(rideId, status);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteRide(@PathVariable Long id) {
+        rideRepository.deleteById(id);
     }
 }

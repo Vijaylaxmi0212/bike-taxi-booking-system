@@ -29,4 +29,9 @@ public class RiderController {
     public List<Rider> getAllRiders() {
         return riderRepository.findAll();
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteRider(@PathVariable Long id) {
+        riderRepository.deleteById(id);
+    }
 }
